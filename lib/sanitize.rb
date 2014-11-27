@@ -177,9 +177,9 @@ class Sanitize
         :invalid => :replace,
         :undef   => :replace)
     end
-
-    html.gsub!(REGEX_UNSUITABLE_CHARS, '')
-    html
+    
+    # Change from gsub! to gsub as this is breaking Rails 2.3.8
+    html.gsub(REGEX_UNSUITABLE_CHARS, '')
   end
 
   def to_html(node)
